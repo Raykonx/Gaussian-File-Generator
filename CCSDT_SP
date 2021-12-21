@@ -1,0 +1,10 @@
+--link1--
+%nprocshared=PROCESSOR
+%mem=MEMORYGB
+%chk=FILE.chk
+#P guess=read geom=check CCSD(T)/Aug-cc-pVTZ int=ultrafine
+
+TITULO
+
+MULTIPLICITY
+

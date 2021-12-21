@@ -1,0 +1,35 @@
+#!/bin/bash
+
+INPUT_NAME=$1
+
+cat <<EOF > $INPUT_NAME.slm
+#!/bin/bash
+#SBATCH -J ${INPUT_NAME}
+#SBATCH -o ${INPUT_NAME}.out
+#SBATCH -e ${INPUT_NAME}.%A.err
+#SBATCH -p std
+#SBATCH -n 1
+#SBATCH -c 16
+#SBATCH --time=2-0
+
+module load apps/gaussian/g16b1
+
+##
+# Modify the input and output files!
+INPUT_FILES=/home/jaluque/QuantumGrain/Urea/Benchmark/${INPUT_NAME}
+INPUT_FILES_XYZ=/home/jaluque/QuantumGrain/Urea/Benchmark/`echo ${INPUT_NAME} | rev | cut -d "_" -f2- | rev`.xyz
+OUTPUT_FILES=/home/jaluque/QuantumGrain/Urea/Benchmark/${INPUT_NAME}.log
+
+##
+# You don't need to modify nothing more
+cp -r \${INPUT_FILES} \${INPUT_FILES_XYZ} \${SCRATCH}
+cd \${SCRATCH}
+
+g16 < ${INPUT_NAME} > ${INPUT_NAME}.log
+
+cp ${INPUT_NAME}.log /home/jaluque/QuantumGrain/Urea/Benchmark/
+#cp ${INPUT_NAME}.chk /home/jaluque/QuantumGrain/Urea/Benchmark/
+
+EOF
+
+sbatch $INPUT_NAME.slm
