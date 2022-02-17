@@ -2,7 +2,7 @@
 %nprocshared=PROCESSOR
 %mem=MEMORYGB
 %chk=FILE.chk
-#P freq=noraman geom=check guess=read METHOD/BASIS DISPERSION
+#P freq=noraman geom=check guess=read METHOD/BASIS DISPERSION PRESS TEMP
 
 TITLE
 
