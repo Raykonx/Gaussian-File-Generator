@@ -44,7 +44,7 @@ echo '
 '
 ###################################################################################################
 
-# Author notes: In order to use this program, we need the files "INPUT_Gaussian", "LINKFILE" and "CCSDT_SP" in the same directory as this program file. I recommend to see them before using the program to ensure that it is according to your expectations.
+# Author notes: In order to use this program, we need the files "INPUT_Gaussian", "LINKFILE", "FREQFILE" and "CCSDT_SP" in the same directory as this program file. I recommend to see them before using the program to ensure that it is according to your expectations.
 
 ###################################################################################################
 
@@ -187,8 +187,7 @@ read processor
 			TEMPPRES
 
 		elif [[ "$optimization" == freq ]];then
-			cp ${MAINPATH}/LINKFILE ${FILEINPUT}
-			sed -i '1d' ${FILEINPUT}
+			cp ${MAINPATH}/FREQFILE ${FILEINPUT}
 			SED_FUNCTION
 			TEMPPRES
 	
