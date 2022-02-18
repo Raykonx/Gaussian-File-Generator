@@ -1,0 +1,10 @@
+%nprocshared=PROCESSOR
+%mem=MEMORYGB
+%chk=FILE.chk
+#P freq=noraman METHOD/BASIS DISPERSION PRESS TEMP
+
+TITLE
+
+MULTIPLICITY
+@NAME.xyz
+
